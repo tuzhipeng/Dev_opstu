@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block title %}登录{% endblock %}
+{% block head %}
+<link rel="stylesheet" href="{{url_for('static', filename = 'css/login.css')}}">
+{% endblock %}
+
+
+{% block main%}
+<script type="text/javascript">
+alert("已为您免费开启成绩更新自动提醒服务")
+</script>
+<form action="/info", method="POST">
+    <div class="form-container">
+            <h3 class="page-title">登录</h3>
+            <div class="form-group">
+                <input type="text" class="form-control" placeholder="学号" name="user_id">
+            </div>
+            <div class="form-group">
+                <input type="password" class="form-control" placeholder="密码(若没改过就与学号一样)" name="password">
+            </div>
+            <div class="form-group">
+                <button class="btn btn-primary btn-block">立即登录</button>
+            </div>
+    </div>
+</form>
+{% endblock %}
+

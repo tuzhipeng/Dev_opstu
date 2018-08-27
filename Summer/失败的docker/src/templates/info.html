@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+{% block title %}当前成绩{% endblock %}
+{% block head %}
+<link rel ="stylesheet" href = "{{url_for("static",filename = "css/info.css")}}" />
+{% endblock %}
+{% block main %}
+<div class = "all">
+        <div class="info" >
+            
+            <ul class="s_info special" >
+                <li class="ss_info" >姓名：</li>
+                <li class="ss_info" > {{content.个人信息.姓名}}</li>
+                <li class="ss_info" >学号：</li>
+                <li class="ss_info last" > {{content.个人信息.学号}}</li>
+                <li class="ss_info" >更新时间</li>
+                <li class="ss_info " > {{content.更新时间}}</li>
+				{% if session['email'] %}
+				<li class="ss_info" >点击可修改邮箱→→→</li>
+				<li class="ss_info last" ><a href="{{url_for('email')}}">{{session['email']}}</a></li>
+{% else %}
+				<li class="ss_info" >开启提醒服务→→→</li>
+				<li class="ss_info last" ><a href="{{url_for('email')}}">填写我的邮箱</a></li>
+{% endif %}
+            </ul>
+	</div>
+<div class="points">
+	 <ul class="grade">
+            <li class="gg_info" >种类</li>
+            <li class="ggs_info" >学年度</li>
+            <li class="g_info" >学期</li>
+            <li class="g_info" >必修门数</li>
+            <li class="g_info" >必修总学分</li>
+            <li class="g_info last" >平均绩点</li>
+        </ul>
+	{% for point in content.绩点[:-1] %}
+	 <ul class="grade">
+            <li class="gg_info" >单个学期</li>
+	    <li class="ggs_info" >{{point.学年度}}</li>
+	    <li class="g_info" >{{point.学期}}</li>
+	    <li class="g_info" >{{point.必修门数}}</li>
+	    <li class="g_info" >{{point.必修总学分}}</li>
+	    <li class="g_info last" >{{point.必修平均绩点}}</li>
+        </ul>
+	{% endfor %}
+
+
+	<ul class="grade">
+            <li class="gg_info" >汇总</li>
+	    <li class="ggs_info" >在校期间</li>
+	    <li class="g_info" >全</li>
+	    <li class="g_info" >{{content.绩点[-1].必修门数}}</li>
+	    <li class="g_info" >{{content.绩点[-1].必修总学分}}</li>
+	    <li class="g_info last" >{{content.绩点[-1].必修平均绩点}}</li>
+        </ul>
+
+</div>
+
+
+<div class="grades" >
+        <ul class="grade">
+            <li class="gg_info" >课程名称</li>
+            <li class="ggs_info" >课程时间</li>
+            <li class="g_info" >课程类别</li>
+            <li class="g_info" >学分</li>
+            <li class="g_info" >成绩</li>
+            <li class="g_info last" >绩点</li>
+        </ul>
+{% for grade in content.成绩[1:] %}
+    <ul class="grade">
+        <li class="gg_info" >{{grade.课程名称}}</li>
+        <li class="ggs_info" >{{grade.学年学期}}</li>
+        <li class="g_info" >{{grade.课程类别}}</li> 
+        <li class="g_info" >{{grade.学分}}</li> 
+        <li class="g_info" >{{grade.最终}}</li> 
+        <li class="g_info last" >{{grade.绩点}}</li>
+    </ul>
+    {% endfor %}
+</div>
+</div>
+{% endblock %}
+

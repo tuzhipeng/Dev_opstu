@@ -1,0 +1,15 @@
+.page-title{
+        text-align:center; 
+}
+html body{
+        background:#f3f3f3;
+}
+div.main{
+        background:#fff;
+        width: 730px;
+	height:100%;
+        margin: 0 auto;
+	margin-top:50px;
+        overflow: hidden;
+}
+

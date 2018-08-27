@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% block title %}邮箱填写{% endblock %}
+{% block head %}
+<link rel="stylesheet" href="{{url_for('static', filename = 'css/login.css')}}">
+{% endblock %}
+
+
+{% block main%}
+		<script>
+			function demo(){
+					try{	
+						var a = document.getElementById('txt').value;
+						if(a == ""){
+							alert( "你没有输入邮箱啊，兄dei！");
+						}
+					}catch(err){
+						alert(err);
+					}
+				}
+			</script>
+<form action="", method="POST">
+    <div class="form-container">
+            <h3 class="page-title">填写前必读！</h3>
+			<h3 style="text-indent:2em">如果您填写的邮箱是QQ邮箱，那么您将收到一封垃圾邮件(不会有提醒，需要您自己到邮箱里去把它勾选，点击“这不是垃圾邮件”，即可正常收到我们以后的提示邮件）
+            <h4 style="text-indent:2em;">由于教务处的访问限制，该系统将在每5个小时检查一次，一旦检测到有成绩更新会在第一时间将成绩发送至您的邮箱，届时请注意查收</h4>
+            <h4 style="text-indent:2em;color:red;">如果没收到邮件说明您的邮箱有误（QQ邮箱会拦截为垃圾邮件），您可以再次登入系统修改，但修改完后我们会在成绩有更新的时候再为您推送，不会立即发，所以请务必保证您修改后的邮箱是正确的哟~</h4>
+			<div class="form-group">
+                <input type="text" id = "txt" class="form-control" placeholder="邮箱" name="email" >
+            </div>
+	    <div class="form-group">
+		 <button  class="btn btn-primary btn-block" onclick="demo()"  >立即提交</button>
+		 
+			
+	    </div>
+    </div>
+</form>
+{% endblock %}
